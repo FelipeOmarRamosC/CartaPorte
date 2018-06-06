@@ -1,0 +1,5 @@
+Comando para exportar la base de datos:
+C:\xampp\mysql\bin>mysqldump --opt --user=root transportes_ramloy > backup_transportes_ramloy.sql
+
+Comando para importar la base de datos:
+C:\xampp\mysql\bin>mysql --user=root transportes_ramloy < backup.sql

@@ -1,0 +1,1093 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteOriginal" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ec855c88-72c9-44ed-a98c-6b60924e1565">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="TALON_ID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     DATE_FORMAT(talones.`TAL_FECHA`,'%d/%m/%Y') AS talones_TAL_FECHA,
+     talones.`TAL_ID` AS talones_TAL_ID,
+     talones.`TAL_RECOGE` AS talones_TAL_RECOGE,
+     talones.`TAL_ENTREGA` AS talones_TAL_ENTREGA,
+     talones.`TAL_VOL_PESO` AS talones_TAL_VOL_PESO,
+     talones.`TAL_OPERADOR` AS talones_TAL_OPERADOR,
+     talones.`TAL_UNIDAD` AS talones_TAL_UNIDAD,
+     talones.`TAL_PLACAS` AS talones_TAL_PLACAS,
+     talones.`TAL_FLETE` AS talones_TAL_FLETE,
+     talones.`TAL_SEGURO` AS talones_TAL_SEGURO,
+     talones.`TAL_OLINEAS` AS talones_TAL_OLINEAS,
+     talones.`TAL_RECOLEC` AS talones_TAL_RECOLEC,
+     talones.`TAL_E_DOM` AS talones_TAL_E_DOM,
+     talones.`TAL_MANIOBRAS` AS talones_TAL_MANIOBRAS,
+     talones.`TAL_IMPORTE` AS talones_TAL_IMPORTE,
+     talones.`TAL_IVA` AS talones_TAL_IVA,
+     talones.`TAL_SUBTOTAL` AS talones_TAL_SUBTOTAL,
+     talones.`TAL_RETENIDO` AS talones_TAL_RETENIDO,
+     talones.`TAL_TOTAL` AS talones_TAL_TOTAL,
+     clientes.`CLI_NOMBRE` AS clientes_CLI_NOMBRE,
+     clientes.`CLI_POBLA` AS clientes_CLI_POBLA,
+     proveedores.`PROV_NOMBRE` AS proveedores_PROV_NOMBRE,
+     proveedores.`PROV_POBLA` AS proveedores_PROV_POBLA,
+     proveedores.`PROV_ESTADO` AS proveedores_PROV_ESTADO,
+     proveedores.`PROV_RFC` AS proveedores_PROV_RFC,
+     clientes.`CLI_RFC` AS clientes_CLI_RFC,
+     clientes.`CLI_ESTADO` AS clientes_CLI_ESTADO,
+     talones.`TAL_FRACCION` AS talones_TAL_FRACCION,
+     talones.`TAL_CLASE` AS talones_TAL_CLASE,
+     talones.`TAL_CUOTA` AS talones_TAL_CUOTA,
+     talones.`TAL_VALOR` AS talones_TAL_VALOR,
+     talones.`TAL_REEMBARCARSE` AS talones_TAL_REEMBARCARSE,
+     talones.`TAL_CONDU_DE` AS talones_TAL_CONDU_DE,
+     talones.`TAL_CONDU_A` AS talones_TAL_CONDU_A,
+     talones.`TAL_OBSER` AS talones_TAL_OBSER,
+     talones.`TAL_LETRA` AS talones_TAL_LETRA,
+     talones.`TAL_STATUS` AS talones_TAL_STATUS,
+     talones.`TAL_BUL_NUM1` AS talones_TAL_BUL_NUM1,
+     talones.`TAL_BUL_NUM2` AS talones_TAL_BUL_NUM2,
+     talones.`TAL_BUL_NUM3` AS talones_TAL_BUL_NUM3,
+     talones.`TAL_BUL_NUM4` AS talones_TAL_BUL_NUM4,
+     talones.`TAL_BUL_CLASE1` AS talones_TAL_BUL_CLASE1,
+     talones.`TAL_BUL_CLASE2` AS talones_TAL_BUL_CLASE2,
+     talones.`TAL_BUL_CLASE3` AS talones_TAL_BUL_CLASE3,
+     talones.`TAL_BUL_CLASE4` AS talones_TAL_BUL_CLASE4,
+     talones.`TAL_PRODUCTO1` AS talones_TAL_PRODUCTO1,
+     talones.`TAL_PRODUCTO2` AS talones_TAL_PRODUCTO2,
+     talones.`TAL_PRODUCTO3` AS talones_TAL_PRODUCTO3,
+     talones.`TAL_PRODUCTO4` AS talones_TAL_PRODUCTO4,
+     talones.`TAL_PESO1` AS talones_TAL_PESO1,
+     talones.`TAL_PESO2` AS talones_TAL_PESO2,
+     talones.`TAL_PESO3` AS talones_TAL_PESO3,
+     talones.`TAL_PESO4` AS talones_TAL_PESO4,
+     talones.`TAL_VOL_MTS1` AS talones_TAL_VOL_MTS1,
+     talones.`TAL_VOL_MTS2` AS talones_TAL_VOL_MTS2,
+     talones.`TAL_VOL_MTS4` AS talones_TAL_VOL_MTS4,
+     talones.`TAL_VOL_MTS3` AS talones_TAL_VOL_MTS3
+FROM
+     `clientes` clientes INNER JOIN `talones` talones ON clientes.`CLI_ID` = talones.`CLIENTE_ID`
+     INNER JOIN `proveedores` proveedores ON talones.`PROVEEDOR_ID` = proveedores.`PROV_ID`
+WHERE
+     talones.`TAL_ID` = $P!{TALON_ID}]]>
+	</queryString>
+	<field name="talones_TAL_FECHA" class="java.lang.String"/>
+	<field name="talones_TAL_ID" class="java.lang.Integer"/>
+	<field name="talones_TAL_RECOGE" class="java.lang.String"/>
+	<field name="talones_TAL_ENTREGA" class="java.lang.String"/>
+	<field name="talones_TAL_VOL_PESO" class="java.lang.Double"/>
+	<field name="talones_TAL_OPERADOR" class="java.lang.String"/>
+	<field name="talones_TAL_UNIDAD" class="java.lang.String"/>
+	<field name="talones_TAL_PLACAS" class="java.lang.String"/>
+	<field name="talones_TAL_FLETE" class="java.lang.Double"/>
+	<field name="talones_TAL_SEGURO" class="java.lang.Double"/>
+	<field name="talones_TAL_OLINEAS" class="java.lang.Double"/>
+	<field name="talones_TAL_RECOLEC" class="java.lang.Double"/>
+	<field name="talones_TAL_E_DOM" class="java.lang.Double"/>
+	<field name="talones_TAL_MANIOBRAS" class="java.lang.Double"/>
+	<field name="talones_TAL_IMPORTE" class="java.lang.Double"/>
+	<field name="talones_TAL_IVA" class="java.lang.Double"/>
+	<field name="talones_TAL_SUBTOTAL" class="java.lang.Double"/>
+	<field name="talones_TAL_RETENIDO" class="java.lang.Double"/>
+	<field name="talones_TAL_TOTAL" class="java.lang.Double"/>
+	<field name="clientes_CLI_NOMBRE" class="java.lang.String"/>
+	<field name="clientes_CLI_POBLA" class="java.lang.String"/>
+	<field name="proveedores_PROV_NOMBRE" class="java.lang.String"/>
+	<field name="proveedores_PROV_POBLA" class="java.lang.String"/>
+	<field name="proveedores_PROV_ESTADO" class="java.lang.String"/>
+	<field name="proveedores_PROV_RFC" class="java.lang.String"/>
+	<field name="clientes_CLI_RFC" class="java.lang.String"/>
+	<field name="clientes_CLI_ESTADO" class="java.lang.String"/>
+	<field name="talones_TAL_FRACCION" class="java.lang.String"/>
+	<field name="talones_TAL_CLASE" class="java.lang.String"/>
+	<field name="talones_TAL_CUOTA" class="java.lang.String"/>
+	<field name="talones_TAL_VALOR" class="java.lang.String"/>
+	<field name="talones_TAL_REEMBARCARSE" class="java.lang.String"/>
+	<field name="talones_TAL_CONDU_DE" class="java.lang.String"/>
+	<field name="talones_TAL_CONDU_A" class="java.lang.String"/>
+	<field name="talones_TAL_OBSER" class="java.lang.String"/>
+	<field name="talones_TAL_LETRA" class="java.lang.String"/>
+	<field name="talones_TAL_STATUS" class="java.lang.String"/>
+	<field name="talones_TAL_BUL_NUM1" class="java.lang.String"/>
+	<field name="talones_TAL_BUL_NUM2" class="java.lang.String"/>
+	<field name="talones_TAL_BUL_NUM3" class="java.lang.String"/>
+	<field name="talones_TAL_BUL_NUM4" class="java.lang.String"/>
+	<field name="talones_TAL_BUL_CLASE1" class="java.lang.String"/>
+	<field name="talones_TAL_BUL_CLASE2" class="java.lang.String"/>
+	<field name="talones_TAL_BUL_CLASE3" class="java.lang.String"/>
+	<field name="talones_TAL_BUL_CLASE4" class="java.lang.String"/>
+	<field name="talones_TAL_PRODUCTO1" class="java.lang.String"/>
+	<field name="talones_TAL_PRODUCTO2" class="java.lang.String"/>
+	<field name="talones_TAL_PRODUCTO3" class="java.lang.String"/>
+	<field name="talones_TAL_PRODUCTO4" class="java.lang.String"/>
+	<field name="talones_TAL_PESO1" class="java.lang.String"/>
+	<field name="talones_TAL_PESO2" class="java.lang.String"/>
+	<field name="talones_TAL_PESO3" class="java.lang.String"/>
+	<field name="talones_TAL_PESO4" class="java.lang.String"/>
+	<field name="talones_TAL_VOL_MTS1" class="java.lang.String"/>
+	<field name="talones_TAL_VOL_MTS2" class="java.lang.String"/>
+	<field name="talones_TAL_VOL_MTS4" class="java.lang.String"/>
+	<field name="talones_TAL_VOL_MTS3" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="87" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="159" height="80" uuid="a3226afc-c384-4401-b36a-a3f5d95c9c77"/>
+				<imageExpression><![CDATA["src\\reports\\trailer.png"]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement x="448" y="13" width="107" height="66" uuid="6b5b78df-4073-480e-a9ff-cd6e674a9e2c"/>
+			</rectangle>
+			<textField>
+				<reportElement x="448" y="28" width="106" height="33" forecolor="#830207" uuid="1d818414-0bef-4f5c-9908-a06cbd4ff974"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{talones_TAL_ID}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="448" y="63" width="107" height="16" uuid="abf3f79e-853e-414c-b64e-95552999ee08"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[EFECTOS FISCALES AL PAGO HECHO EN UNA SOLA EXHIBICIÓN]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="449" y="13" width="106" height="13" uuid="cbc7777a-a835-4319-8999-fdab76a12e0c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{talones_TAL_FECHA}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="234" y="0" width="136" height="43" uuid="4d45a895-cbab-459d-8695-60a7ab1637f3"/>
+				<imageExpression><![CDATA["src\\reports\\ramloy.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="169" y="45" width="267" height="9" forecolor="#000000" uuid="5aa6ed74-3769-48a2-b05f-c3dface9f268"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[LUZ ANGELICA LOPEZ RODRIGUEZ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="169" y="53" width="267" height="9" forecolor="#000000" uuid="5f991730-511f-4dfb-ba28-db6208adb08f"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[R.F.C. LORL741010IH1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="169" y="61" width="267" height="9" forecolor="#000000" uuid="5a24c7b2-d209-44d4-81e9-95f3856a6f74"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[SERVICIO PÚBLICO FEDERAL DE AUTOTRANSPORTE DE CARGA EN GENERAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="169" y="69" width="267" height="9" forecolor="#000000" uuid="732326d6-be29-4e63-9b31-cd43b6b62833"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[RUTA CAMINOS NACIONALES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="163" y="77" width="279" height="9" forecolor="#000000" uuid="4f43a687-7201-4604-a8ba-bda0cd82db85"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[PRIV. 2 DE ABRIL   NO.85   TEL. 279-05-69   C.P. 72620   SAN MIGUEL XOXTLA, PUE.]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="651" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="10" width="277" height="69" uuid="ca4fbee7-156b-4ef3-bc08-615c01c230c6"/>
+				<rectangle radius="5">
+					<reportElement x="1" y="1" width="274" height="68" forecolor="#999999" uuid="abdd0aee-d8bc-488f-8adc-1caa577b1423"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="3" y="3" width="35" height="11" uuid="6e1e98dc-be80-4a8a-8ad1-f66a162e7ad8"/>
+					<textElement textAlignment="Left">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ORIGEN:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="3" y="15" width="50" height="11" uuid="2a1b60d1-fb9b-4eff-9358-80c90a2870e6"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[REMITENTE:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="3" y="27" width="24" height="11" uuid="aaddd725-39c2-4c2b-bec6-b8922f575171"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[R.F.C:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="3" y="39" width="45" height="11" uuid="efa17bff-de07-47b7-acf7-a619322eef28"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DOMICILIO:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="3" y="51" width="76" height="11" uuid="d0525793-46a6-47eb-a070-b35847c90719"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SE RECOGERÁ EN:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="42" y="3" width="232" height="11" uuid="9b6127c5-8819-4a97-831b-129b253d376d"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{clientes_CLI_ESTADO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="57" y="15" width="217" height="11" uuid="d6c15fe6-45a2-4bbf-993e-46369532dff7"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{clientes_CLI_NOMBRE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="31" y="27" width="243" height="11" uuid="c581cc06-d2cb-4578-a022-973f344efbc1"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{clientes_CLI_RFC}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="52" y="39" width="222" height="11" uuid="4d97716c-a814-41d2-850a-970f81615c34"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{clientes_CLI_POBLA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="83" y="51" width="191" height="11" uuid="e7f561b0-80ef-480f-b387-e5d58212dcec"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_RECOGE}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="277" y="10" width="278" height="69" uuid="22e69962-b103-4c05-9db5-20a200aa1e13"/>
+				<rectangle radius="5">
+					<reportElement x="2" y="1" width="275" height="68" forecolor="#999999" uuid="062a0b81-ff62-40ca-b32e-d5e77c164f01"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="4" y="4" width="39" height="11" uuid="07caecb2-e3e0-44b4-8204-47305c6b9c98"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DESTINO:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="4" y="17" width="63" height="11" uuid="53cab59c-e0bc-4958-b08a-7651838f2a39"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DESTINATARIO:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="4" y="30" width="24" height="11" uuid="397db975-56b7-43bb-b9f2-78a076ca28bf"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[R.F.C:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="4" y="43" width="45" height="11" uuid="398c908b-570f-4cf5-9921-8c54216c4019"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DOMICILIO:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="4" y="56" width="80" height="11" uuid="553cf807-9f06-462e-b363-f73111161004"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SE ENTREGARÁ EN:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="47" y="4" width="229" height="11" uuid="47050c22-97f4-44bf-979f-f3dc9c861344"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{proveedores_PROV_ESTADO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="72" y="17" width="204" height="11" uuid="9908b91d-48bf-436b-a59d-d2c45778adb4"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{proveedores_PROV_NOMBRE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="32" y="30" width="244" height="11" uuid="26169a7d-594f-4466-adbb-6253cf020150"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{proveedores_PROV_RFC}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="53" y="43" width="223" height="11" uuid="c266bf19-ca2c-4b49-82d3-940f60d009db"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{proveedores_PROV_POBLA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="88" y="56" width="188" height="11" uuid="854e2a7b-53d8-4c2f-8b30-f7c5433b731d"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_ENTREGA}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="0" y="88" width="555" height="25" uuid="1e49ec13-cbcb-416f-ac77-a8ccd7b07034"/>
+				<rectangle radius="5">
+					<reportElement x="1" y="0" width="553" height="25" forecolor="#999999" uuid="bb39d6a3-3513-4845-b9fe-bee17fa381e3"/>
+					<graphicElement>
+						<pen lineStyle="Solid"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="3" y="7" width="66" height="11" uuid="f9adf24f-f4f3-4fb0-b7e1-cc01ddf73618"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[FRACCIÓN NUM:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="138" y="7" width="31" height="11" uuid="c8cc409f-d969-47ad-a4d6-000490cd97d4"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLASE:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="275" y="2" width="58" height="21" uuid="f3f4d7e6-4a10-4ab1-b815-23c67b65f665"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CUOTA POR TONELADAS $]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="412" y="2" width="59" height="21" uuid="d13a27fe-4547-48f9-871c-ba989be597c1"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[VALOR DECLARADO $]]></text>
+				</staticText>
+				<line>
+					<reportElement x="136" y="0" width="1" height="25" forecolor="#999999" uuid="91f02492-0a2a-4475-b566-8bd24f2aaf77"/>
+				</line>
+				<line>
+					<reportElement x="273" y="0" width="1" height="25" forecolor="#999999" uuid="f590c45b-b03d-4878-b5b4-aad0e314a8b3"/>
+				</line>
+				<line>
+					<reportElement x="410" y="0" width="1" height="25" forecolor="#999999" uuid="205220c7-a8ab-44a0-aee9-6eb1815a1b05"/>
+				</line>
+				<textField>
+					<reportElement x="69" y="7" width="67" height="11" uuid="740026ad-1932-4965-96ed-4720aa82355c"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_FRACCION}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="169" y="7" width="104" height="11" uuid="f6453815-514a-4fe8-8053-f93b2a0cce39"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_CLASE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="333" y="7" width="77" height="11" uuid="d9d8506e-9fa2-4fd6-bf34-e2761dd884e4"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_CUOTA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="471" y="7" width="82" height="11" uuid="79c6ae0a-41ac-4421-a854-df10474f19a0"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_VALOR}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="0" y="122" width="408" height="86" uuid="035894cf-078b-4f72-96b3-dd4fc53bce8c"/>
+				<rectangle radius="5">
+					<reportElement x="1" y="1" width="406" height="84" forecolor="#999999" uuid="6333e8da-de2d-4d85-923c-53f9f51ed3c9"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="3" y="3" width="60" height="11" uuid="cb7d6714-e68d-4ab6-9b4c-1a666cad93a4"/>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[BULTOS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="2" y="17" width="32" height="17" uuid="36b47954-6187-4351-9837-894c40977405"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[NUM]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="35" y="17" width="31" height="17" uuid="658de6d9-3fd4-43b6-9c7f-be8bad108d69"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CLASE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="68" y="3" width="200" height="31" uuid="f7c4756c-1ff7-4d33-a417-6277f2bf36aa"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[QUE SE DICE CONTIENEN]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="2" y="37" width="32" height="11" uuid="14680e27-48ce-4403-9de9-90d573af0601"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_BUL_NUM1}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="35" y="37" width="31" height="11" uuid="3bcace45-b0e5-46b2-93c1-ecc44d0b764c"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_BUL_CLASE1}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="68" y="37" width="200" height="11" uuid="d80e839b-7751-4a26-914b-b896078545bf"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_PRODUCTO1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="271" y="3" width="43" height="31" uuid="dcaed73c-38da-43a4-a583-7fd1071f8bf2"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[PESO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="317" y="2" width="89" height="11" uuid="f53b528b-5169-446e-8608-a43da7344654"/>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[VOLUMEN]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="317" y="14" width="43" height="21" uuid="14003831-a03b-40a4-9114-ec4408bdabfc"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[MTS3]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="363" y="14" width="43" height="21" uuid="e5486e17-059e-4e9c-a147-667d432672bb"/>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[PESO ESTIMADO]]></text>
+				</staticText>
+				<line>
+					<reportElement x="66" y="1" width="1" height="84" forecolor="#999999" uuid="51b99a63-8c62-4e65-9194-6de5d07079dc"/>
+				</line>
+				<line>
+					<reportElement x="269" y="1" width="1" height="84" forecolor="#999999" uuid="cffba850-27ee-425c-b5a9-154104462944"/>
+				</line>
+				<line>
+					<reportElement x="315" y="1" width="1" height="84" forecolor="#999999" uuid="cd10a7f5-3dcd-4caf-8c95-874a349707c9"/>
+				</line>
+				<line>
+					<reportElement x="361" y="14" width="1" height="71" forecolor="#999999" uuid="097e31f5-8758-4bb3-b967-bd9e9b3cbfec"/>
+				</line>
+				<line>
+					<reportElement x="1" y="35" width="406" height="1" forecolor="#999999" uuid="2aa0ab12-0dd0-4e6e-8b1a-258e5634e065"/>
+				</line>
+				<line>
+					<reportElement x="1" y="15" width="65" height="1" forecolor="#999999" uuid="6b73f85d-3140-41f3-8fe8-3371db55dbed"/>
+				</line>
+				<line>
+					<reportElement x="34" y="16" width="1" height="69" forecolor="#999999" uuid="8f8f4155-e8bc-45db-9b12-a9d70c0887db"/>
+				</line>
+				<line>
+					<reportElement x="315" y="13" width="92" height="1" forecolor="#999999" uuid="21c56889-a691-401f-af9a-d2e22b93a9a3"/>
+				</line>
+				<textField>
+					<reportElement x="271" y="37" width="43" height="11" uuid="e87d1508-5397-4ba7-903c-6bbd3b278561"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_PESO1}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="317" y="37" width="43" height="11" uuid="7941901d-2f13-4bbf-8400-0b35b8d52215"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_VOL_MTS1}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="363" y="37" width="43" height="11" uuid="dee191c3-ad49-4fc6-a775-f58e52c4e166"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_VOL_PESO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="2" y="49" width="32" height="11" uuid="06a43373-52b4-413e-ac84-ef1b54ff0fe2"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_BUL_NUM2}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="2" y="61" width="32" height="11" uuid="4c66e8a1-c636-4a6a-aa3c-94c2512ec64a"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_BUL_NUM3}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="2" y="73" width="32" height="11" uuid="a5012480-9389-4366-8588-2983b6b8b9b3"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_BUL_NUM4}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="35" y="49" width="31" height="11" uuid="c0b4378e-e7f2-41fb-9c65-528eede1062d"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_BUL_CLASE2}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="35" y="61" width="31" height="11" uuid="c22e9c6f-58d5-4738-8629-6990aa6cb4a5"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_BUL_CLASE3}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="35" y="73" width="31" height="11" uuid="f794ef54-6f3f-46d2-a33a-41576ff9f436"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_BUL_CLASE4}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="68" y="49" width="200" height="11" uuid="abe0ff2e-0f08-47ea-b235-38796cd8c23a"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_PRODUCTO2}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="68" y="61" width="200" height="11" uuid="e0b35267-e78f-4dc6-a40a-6dcc6d2ca4ff"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_PRODUCTO3}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="68" y="73" width="200" height="11" uuid="745273bf-9126-4a17-ba41-298ba9938522"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_PRODUCTO4}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="271" y="49" width="43" height="11" uuid="7699ccb3-523f-47b9-9fcb-a3bef198fdb9"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_PESO2}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="271" y="61" width="43" height="11" uuid="6f907bf3-0c53-4771-a738-413e2d026898"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_PESO3}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="271" y="73" width="43" height="11" uuid="3d3f7ce3-9368-4237-a969-8d6a9c7108cc"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_PESO4}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="317" y="49" width="43" height="11" uuid="801ac739-f1cd-4569-8856-ff4de9da3562"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_VOL_MTS2}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="317" y="61" width="43" height="11" uuid="2cff1acf-805b-43a5-85e6-53a1cc855f79"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_VOL_MTS3}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="317" y="73" width="43" height="11" uuid="84e62b18-8185-4c3b-a602-8a4c440a9028"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_VOL_MTS4}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="418" y="122" width="137" height="189" uuid="be37a37e-1763-4489-9644-00584eddcdee"/>
+				<rectangle radius="10">
+					<reportElement x="1" y="2" width="135" height="185" forecolor="#999999" uuid="bc4f52da-42c5-4f83-99b5-cecde93bdf83"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="3" y="14" width="71" height="11" uuid="235b8f2c-9f21-4810-962a-650f21118afc"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CONCEPTO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="3" y="34" width="71" height="11" uuid="6890773e-fb2f-4ff4-bddf-3fa1c95714d3"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[FLETE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="3" y="46" width="71" height="11" uuid="b038adf7-a14d-4ccc-9f4e-e7dcd7779075"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SEGURO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="3" y="58" width="71" height="11" uuid="ee54f74f-ae69-4f61-843f-b5d6b205902b"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[O. LINEAS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="3" y="70" width="71" height="11" uuid="67900785-b41b-47d3-baf8-272eea7c5933"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[RECOLECCIÓN]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="3" y="82" width="71" height="11" uuid="29e9e4ae-673f-424b-9d88-cb1e5eaa5541"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ENTREGA A DOM.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="3" y="94" width="71" height="11" uuid="4773df50-63a4-4e13-89dc-20e6b9edf528"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[MANIOBRAS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="3" y="125" width="71" height="11" uuid="6f176443-41a5-4b01-8b64-8c20c43149e3"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[IMPORTE $]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="77" y="34" width="58" height="11" uuid="e3ae8bcc-dd2e-486b-a585-8f2605da4e41"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_FLETE}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="75" y="1" width="2" height="186" forecolor="#999999" uuid="ffc6266e-5d81-4829-a0a1-de87321d0afc"/>
+				</line>
+				<staticText>
+					<reportElement x="3" y="137" width="71" height="11" uuid="b46bcd0f-e997-47b2-b3af-f9f588424d0e"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[I.V.A. $]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="3" y="149" width="71" height="11" uuid="0e0442b3-23b6-4d2c-aa29-b28ae87c6522"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SUB-TOTAL $]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="3" y="161" width="71" height="11" uuid="2040bb85-9c85-418e-a498-952df44ce6ab"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[RET. 4% I.VIA. $]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="3" y="173" width="71" height="11" uuid="6d10d08d-2638-4cbe-a081-2beea2b4097d"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL $]]></text>
+				</staticText>
+			</frame>
+			<textField>
+				<reportElement x="495" y="168" width="58" height="11" uuid="de9e3b3a-9f27-4279-b81e-6a97673b4a94"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{talones_TAL_SEGURO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="495" y="180" width="58" height="11" uuid="9f5b285c-78e1-47ba-9a5d-6b761d565d0e"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{talones_TAL_OLINEAS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="495" y="192" width="58" height="11" uuid="db0b3a0d-7091-48d7-9e34-1de8d3b66756"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{talones_TAL_RECOLEC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="495" y="204" width="58" height="11" uuid="5f1aa0ca-2249-4a99-97c0-61977e3ab711"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{talones_TAL_E_DOM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="495" y="216" width="58" height="11" uuid="87786a77-7046-4530-88e8-6fc23af1bdad"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{talones_TAL_MANIOBRAS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="495" y="247" width="58" height="11" uuid="6ee54696-9c77-484d-a79c-2bddca15bcea"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{talones_TAL_IMPORTE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="495" y="259" width="58" height="11" uuid="0f6125a9-6951-4f0d-a38f-1fc826b60603"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{talones_TAL_IVA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="495" y="271" width="58" height="11" uuid="c3e3dfed-87af-4f9c-91e3-6a37f77b80f8"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{talones_TAL_SUBTOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="495" y="283" width="58" height="11" uuid="a8fc21a6-797a-4d1e-aee3-9c92733d7e99"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{talones_TAL_RETENIDO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="495" y="295" width="58" height="11" uuid="d91df153-9d60-4d9c-aaab-9c7e67966023"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{talones_TAL_TOTAL}]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement x="0" y="217" width="408" height="41" uuid="287baabc-8258-436d-9bd0-8a544f2b709c"/>
+				<rectangle radius="5">
+					<reportElement x="1" y="0" width="198" height="41" forecolor="#999999" uuid="ff3a688a-4b89-4be3-9808-88c2b2845a8d"/>
+				</rectangle>
+				<rectangle radius="5">
+					<reportElement x="209" y="0" width="198" height="41" forecolor="#999999" uuid="812f5a3f-0b66-47cf-9890-d9abba061969"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="3" y="3" width="50" height="11" uuid="d3cade73-e857-41d0-8f58-60bdd7a90008"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[OPERADOR:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="3" y="15" width="50" height="11" uuid="2d3c6304-843f-45ac-af80-d36ec8888a95"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[UNIDAD:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="3" y="27" width="50" height="11" uuid="eaf89ab3-d2ed-4e5f-8d7e-ac97051ee800"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[PLACAS:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="212" y="3" width="93" height="11" uuid="8212cb14-785c-4fd4-99a7-f8954ddb61fa"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[REEMBARCARSE CON:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="212" y="15" width="53" height="11" uuid="bbc969ff-62d4-433d-b982-1debe1f8a5ac"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CONDUCIRA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="212" y="27" width="15" height="11" uuid="5ef571fc-7cf6-4985-9e08-75db2b40ff2a"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DE:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="316" y="27" width="11" height="11" uuid="5f8c7d00-3f38-477c-8b63-6658beb4ec6d"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[A:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="54" y="3" width="144" height="11" uuid="7e47db0c-0fc8-447e-986b-9dce1d9b78a7"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_OPERADOR}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="54" y="15" width="144" height="11" uuid="b5eb281d-c32e-42b0-b2c4-ff2589225ed4"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_UNIDAD}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="54" y="27" width="144" height="11" uuid="9463c39e-cdd4-4889-bff5-aa98b6c1d4ca"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_PLACAS}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="305" y="3" width="100" height="23" uuid="f0bda83c-8f44-46fd-ba80-e128f235f6e7"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_REEMBARCARSE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="227" y="27" width="86" height="11" uuid="a59c4fdb-2522-4302-ad6d-244e1ae09c33"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_CONDU_DE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="328" y="27" width="77" height="11" uuid="80a03992-c0c4-4daa-9326-909669f8397c"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_CONDU_A}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="0" y="264" width="408" height="46" uuid="b4de3fcf-0ce3-4c6b-84d3-c4ce6c185aa6"/>
+				<rectangle radius="5">
+					<reportElement x="1" y="11" width="406" height="34" forecolor="#999999" uuid="a6383bdc-87c1-4a18-bd1a-276685d4816b"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="2" y="11" width="77" height="11" uuid="066359e4-1656-47a9-bdc9-d5daee12b5e2"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[OBSERVACIONES:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="2" y="0" width="403" height="11" uuid="ebd31f19-a863-4b29-829d-c841f1254715"/>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[IMPUESTO RETENIDO DE CONFORMIDAD CON LA LEY DEL IMPUESTO AL VALOR AGREGADO]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="79" y="11" width="326" height="31" uuid="98870c3f-3901-4106-97fa-7178316442c9"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_OBSER}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="0" y="315" width="555" height="52" uuid="106612e2-61f5-4e81-9d56-9509a354d814"/>
+				<staticText>
+					<reportElement x="3" y="3" width="256" height="11" uuid="38d6899e-3a22-4387-9de3-3969106e46b0"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[POR ESTE PAGARE, ME COMPROMETO A PAGAR A LA ORDEN DE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="260" y="3" width="139" height="11" uuid="eb2837dc-79cc-4499-a7f3-0ff31eebe8e0"/>
+					<textElement>
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[LUZ ANGELICA LOPEZ RODRIGUEZ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="401" y="3" width="73" height="11" uuid="a873e457-e5e5-44ea-888b-6a6039db1a09"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[LA CANTIDAD DE $]]></text>
+				</staticText>
+				<line>
+					<reportElement x="476" y="13" width="74" height="1" uuid="3f93a010-82eb-4353-a8e5-7fce08027717"/>
+				</line>
+				<staticText>
+					<reportElement x="3" y="14" width="382" height="11" uuid="b7fd1a9c-fcb8-4fa2-9eec-02d8738b71b2"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[EN EL PLAZO ESTABLECIDO, DE LO CONTRARIO PAGARE INTERESES MORATORIOS A RAZON DE:]]></text>
+				</staticText>
+				<line>
+					<reportElement x="385" y="23" width="50" height="1" uuid="bc34b52e-522c-4727-b48f-e271ccb58042"/>
+				</line>
+				<staticText>
+					<reportElement x="435" y="14" width="57" height="11" uuid="b1098b42-6739-4af3-9264-e2c829674fec"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[% MENSUAL.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="228" y="40" width="100" height="11" uuid="8a9d0bdf-07b0-422f-8930-3acf7c6cc8b3"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[IMPORTE CON LETRA]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="4" y="28" width="547" height="11" uuid="984fb260-333b-480e-8114-075a1d28157c"/>
+					<textElement textAlignment="Center">
+						<font size="8" isUnderline="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{talones_TAL_LETRA}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<staticText>
+				<reportElement x="223" y="428" width="109" height="11" uuid="5729ca4a-6c1a-4c48-bf7c-24a2a7e9a0a4"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[RECIBI DE CONFORMIDAD:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="599" width="153" height="11" uuid="8093c96e-e816-4203-ba48-34b20120406e"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[FIRMA  Y SELLO DEL DESTINATARIO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="23" y="171" width="507" height="110" forecolor="#DD4B39" uuid="f2a56f9c-ecae-4b01-a126-680a73f2a5f9"/>
+				<textElement textAlignment="Center" rotation="None" markup="none">
+					<font size="80" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{talones_TAL_STATUS}.equals("CANCELADO")?"CANCELADO":
+    "")]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="181" y="598" width="192" height="1" uuid="77f79bab-43b4-4472-97e3-5a2830bf99f0"/>
+			</line>
+		</band>
+		<band height="512">
+			<staticText>
+				<reportElement x="16" y="30" width="523" height="26" uuid="f794b8b3-f939-4981-9f8a-c624a00162d9"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[CONDICIONES BAJO LAS CUALES SE REALIZARA EL TRANSPORTE DE LAS MERCANCIAS O EFECTOS QUE AMPARA ESTA CARTA DE PORTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="2" y="78" width="270" height="300" uuid="3ce8ab5c-a988-40aa-a4b3-f22027ce20cb"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[PRIMERA.- Para los efectos del presente contrato de transporte se denomina “Porteador” al transportista y “Remitente” al usuario que contrata el servicio.
+SEGUNDA.- El “Remitente” es responsable de que la información proporcionada al “Porteador” sea veraz y que la documentación que entregue para efectos del transporte sea la correcta.
+TERCERA.- El “Remitente” debe aclarar al “Porteador” el tipo de mercancía o efectos de que se trate, peso, medidas y/o número de la carga que entrega para su transporte y en su caso el valor de la misma. La carga que se entregue a granel será pesada por el “Porteador” en el primer punto donde haya bascula apropiada, o en su defecto, aforada en metros cúbicos con la conformidad del “Remitente”.
+CUARTA.- Para efectos del transporte, el “Remitente” deberá entregar al “Porteador” los documentos que las leyes y reglamentos exijan para llevar a cabo el servicio, en caso de no cumplirse con estos requisitos el “Porteador” está obligado a rehusar el transporte de las mercancías.
+QUINTA.- Si por sospecha de falsedad en la declaración del contenido de un bulto, el “Porteador” deseare a proceder a su reconocimiento, podrá hacerlo ante testigos y con asistencia del “Remitente” o del consignatario. Si este último no concurriere, se solicitará la presencia de un inspector de la Secretaria de Comunicaciones y Transportes y se levantará el acta correspondiente. El “Porteador” tendrá en todo caso la obligación de dejar los bultos en el estado en que se encontraban antes del reconocimiento.
+SEXTA.- El “Porteador” deberá recoger y entregar la carga precisamente en los domicilios que señale el “Remitente” ajustándose a los términos y condiciones convenidos. El “Porteador” solo está obligado a llevar la carga al domicilio del consignatario para su entrega una sola vez. Si esta no fuera recibida, se dejara aviso de que la mercancía queda a disposición del interesado en las bodegas que indique el “Porteador”.
+SÉPTIMA.- Si la carga no fuera retirada dentro de los días siguientes a aquel en que hubiese sido puesta a disposición del consignatario, el “Porteador” podrá solicitar la venta en pública subasta con arreglo a lo que dispone el Código de Comercio.
+OCTAVA.- El “Porteador” y el “Remitente” negociarán libremente el precio del servicio, tomando en cuenta su tipo, característica de los embarques, volumen, regularidad, clase de carga y sistema de pago.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="285" y="78" width="270" height="380" uuid="f8937c5d-324e-4278-9fb9-858f004407a4"/>
+				<textElement textAlignment="Justified">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[NOVENA.- Si el “Remitente” desea que el “Porteador” asuma la responsabilidad por el valor de las mercancías o efectos que él declare y que cubra toda clase de riesgos, inclusive los derivados de caso fortuito o de fuerza mayor, las partes deberán convenir un cargo adicional, equivalente al valor de la prima del seguro que se contrate, el cual se deberá expresar en la carta de porte.
+DÉCIMA.- Cuando el importe del flete no incluya el cargo adicional, la responsabilidad del “Porteador” queda expresamente limitada a la cantidad equivalente a 15 días de salario mínimo vigente en el Distrito Federal por tonelada o cuando se trate de embarques cuyo peso sea mayor de 200 Kg. pero menor de 1000 Kg. y a 4 días de salario mínimo por remesa cuando se trate de embarques con peso hasta de 200 Kg.
+DÉCIMA PRIMERA.- El precio del transporte deberá pagarse en origen, salvo convenio entre las partes de pago en destino. Cuando el transporte se hubiese concertado “Flete por Cobrar”, la entrega de las mercancías o efectos se hará contra el pago del flete y el “Porteador” tendrá derecho a retenerlos mientras no se le cubra el precio convenido.
+DÉCIMA SEGUNDA.- Si al momento de la entrega resultare algún faltante o avería, el consignatario deberá hacerla constar en ese acto en la carta de porte y formular su reclamación por escrito al “Porteador”, dentro de las 24 horas siguientes.
+DÉCIMA TERCERA.- El “Porteador” queda eximido de la obligación de recibir mercancías o efectos para su transporte, en los siguientes casos:
+a) Cuando se trate de carga que por su naturaleza, peso, volumen, embalaje defectuoso o cualquiera otra circunstancia no pueda transportarse sin destruirse o sin causar daño a los demás artículos o al material rodante, salvo que la empresa de que se trate tenga el equipo adecuado.
+b) Las mercancías cuyo transporte haya sido prohibido, por disposiciones legales o reglamentarias. Cuando tales disposiciones no prohíban precisamente el transporte de determinadas mercancías, pero si ordenen la presentación de ciertos documentos para que puedan ser transportadas, el “Remitente” estará obligado a entregar al “Porteador” los documentos correspondientes.
+DÉCIMA CUARTA.- Los casos no previstos en las presentes condiciones y las quejas derivadas de su aplicación se someterán por la vía administrativa a la Secretaria de Comunicaciones y Transportes.
+
+Esta Carta de Porte debe ajustarse al modelo que apruebe la Secretaría de Comunicaciones y Transportes y por la Dirección General de Tarifas, Terminales y Servicios Conexos. (Reglamento de Explotación de Caminos Artículo 109).
+
+Se dejan sin efecto las circulares 222, 223, 222-1, 222-2, 226, publicadas respectivamente en el diario Oficial de la Federación los días 29 de diciembre de 1955, 11 de diciembre de 1956, 15 de diciembre de 1960, 9 de marzo y 4 de enero de 1961.
+]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="57" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
